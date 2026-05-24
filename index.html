@@ -14,7 +14,7 @@
     <div class="background-overlay"></div>
     <div class="container">
         
-        <nav class="navbar">
+        <nav class="navbar reveal-top">
             <div class="logo">
                 <div class="avatar-mini">
                     <img src="profil.jpg" alt="Avatar Mini">
@@ -24,12 +24,12 @@
             <div class="nav-links">
                 <a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a>
                 <a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> About</a>
-                <a href="#social" class="nav-item"><i class="fa-solid fa-share-nodes"></i> Social Media</a>
+                <a href="#social" class="nav-item"><i class="fa-solid fa-share-nodes"></i> Social</a>
             </div>
         </nav>
 
-        <header id="home" class="hero section-scroll">
-            <div class="hero-text">
+        <header class="hero section-scroll" id="home">
+            <div class="hero-text reveal-left">
                 <span class="subtitle">WELCOME TO MY WORLD</span>
                 <h1 class="main-title">N4MCHA</h1>
                 <h3 class="tagline">Code. Create. Inspire.</h3>
@@ -38,7 +38,7 @@
                 </p>
                 <a href="#about" class="btn-explore nav-item">Explore More <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div class="hero-avatar">
+            <div class="hero-avatar reveal-right">
                 <div class="avatar-glow">
                     <div class="avatar-main">
                         <img src="profil.jpg" alt="Foto Profil">
@@ -72,29 +72,47 @@
                 <div class="skills-container">
                     <div class="skills-col">
                         <div class="skill-item">
-                            <div class="skill-info"><span class="html-icon">HTML</span> <span>90%</span></div>
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="18" alt="HTML"> HTML</span>
+                                <span>90%</span>
+                            </div>
                             <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-info"><span class="css-icon">CSS</span> <span>85%</span></div>
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="18" alt="CSS"> CSS</span>
+                                <span>85%</span>
+                            </div>
                             <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-info"><span class="js-icon">JavaScript</span> <span>80%</span></div>
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="18" alt="JS"> JavaScript</span>
+                                <span>80%</span>
+                            </div>
                             <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
                         </div>
                     </div>
                     <div class="skills-col">
                         <div class="skill-item">
-                            <div class="skill-info"><span class="py-icon">Python</span> <span>75%</span></div>
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="18" alt="Python"> Python</span>
+                                <span>75%</span>
+                            </div>
                             <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-info"><span class="php-icon">PHP</span> <span>70%</span></div>
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" width="18" alt="PHP"> PHP</span>
+                                <span>70%</span>
+                            </div>
                             <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-info"><span class="cpp-icon">C++</span> <span>65%</span></div>
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width="18" alt="C++"> C++</span>
+                                <span>65%</span>
+                            </div>
                             <div class="progress-bar"><div class="progress" style="width: 65%;"></div></div>
                         </div>
                     </div>
@@ -134,7 +152,7 @@
     </div>
 
     <script>
-        // 1. SCROLL SPY (Menu otomatis aktif saat discroll)
+        // 1. SCROLL SPY (Navigasi Aktif Otomatis yang Presisi)
         const sections = document.querySelectorAll('.section-scroll');
         const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -142,7 +160,8 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 150)) {
+                // Deteksi akurat: Menu berpindah saat section menyentuh pertengahan layar
+                if (pageYOffset >= (sectionTop - window.innerHeight / 2.5)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -164,7 +183,7 @@
             });
         });
 
-        // 3. ANIMASI SCROLL MUNCUL DARI BAWAH
+        // 3. ANIMASI SAAT SCROLL BAWAH
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {

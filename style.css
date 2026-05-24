@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* Hilangkan kotak biru di HP */
+    -webkit-tap-highlight-color: transparent; 
 }
 
 html {
@@ -25,15 +25,15 @@ body {
 
 a:focus, button:focus { outline: none; }
 
+/* FIX BLACK BOX ANDROID */
 .background-overlay {
     position: fixed;
     top: -10%;
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(0, 102, 255, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 102, 255, 0.3) 0%, rgba(0, 102, 255, 0) 70%);
     z-index: -1;
-    filter: blur(50px);
 }
 
 .container {
@@ -42,9 +42,7 @@ a:focus, button:focus { outline: none; }
     width: 100%;
 }
 
-/* =========================================
-   ANIMASI OTOMATIS SAAT WEB PERTAMA DIBUKA
-   ========================================= */
+/* --- ANIMASI OTOMATIS AWAL BUKA --- */
 @keyframes fadeDown {
     0% { opacity: 0; transform: translateY(-40px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -63,7 +61,7 @@ a:focus, button:focus { outline: none; }
 .hero-avatar { animation: fadeLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 
 
-/* --- GLASSMORPHISM CARD TEMPLATE --- */
+/* --- GLASSMORPHISM CARD --- */
 .glass-card {
     background: rgba(255, 255, 255, 0.015);
     backdrop-filter: blur(12px);
@@ -73,6 +71,11 @@ a:focus, button:focus { outline: none; }
     padding: 24px;
     margin-bottom: 30px;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    /* HARDWARE ACCELERATION */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
 }
 
 .glass-card:hover {
@@ -88,6 +91,7 @@ a:focus, button:focus { outline: none; }
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(0, 150, 255, 0.3);
     padding: 12px 30px;
     border-radius: 50px;
@@ -95,6 +99,10 @@ a:focus, button:focus { outline: none; }
     position: sticky;
     top: 20px;
     z-index: 100;
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
 }
 
 .logo {
@@ -310,12 +318,12 @@ a:focus, button:focus { outline: none; }
     font-weight: 600;
 }
 
-.html-icon::before { content: "\f13b"; font-family: "Font Awesome 6 Free"; color: #ff6d00; margin-right: 5px; }
-.css-icon::before { content: "\f13c"; font-family: "Font Awesome 6 Free"; color: #0091ff; margin-right: 5px; }
-.js-icon::before { content: "\f3b8"; font-family: "Font Awesome 6 Brands"; color: #ffd600; margin-right: 5px; }
-.py-icon::before { content: "\f3e2"; font-family: "Font Awesome 6 Brands"; color: #3776ab; margin-right: 5px; }
-.php-icon::before { content: "\f457"; font-family: "Font Awesome 6 Brands"; color: #777bb4; margin-right: 5px; }
-.cpp-icon::before { content: "\e2f0"; font-family: "Font Awesome 6 Free"; color: #00599c; margin-right: 5px; font-weight: 900;}
+/* Kerapian Posisi Logo Asli Devicon */
+.skill-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
 .progress-bar {
     width: 100%;
@@ -376,9 +384,7 @@ a:focus, button:focus { outline: none; }
 .soc-left p { font-size: 0.8rem; color: #94a3b8; }
 .arrow-icon { color: #00d2ff; font-size: 1rem; text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); }
 
-/* =========================================
-   ANIMASI SCROLL BAWAH (REVEAL UP)
-   ========================================= */
+/* --- ANIMASI SCROLL BAWAH (REVEAL UP) --- */
 .reveal-up {
     opacity: 0;
     transform: translateY(60px);
@@ -389,7 +395,7 @@ a:focus, button:focus { outline: none; }
     transform: translateY(0);
 }
 
-/* --- RESPONSIVE MEDIA QUERIES --- */
+/* --- RESPONSIVE MEDIA QUERIES (HP) --- */
 @media (max-width: 768px) {
     body { padding: 15px 15px 60px 15px; }
     .navbar { padding: 10px 20px; margin-bottom: 25px; border-radius: 30px; }
@@ -397,7 +403,7 @@ a:focus, button:focus { outline: none; }
     .nav-links a { font-size: 0.75rem; padding: 6px 12px; }
 
     .hero { grid-template-columns: 1fr; text-align: center; gap: 20px; }
-    .hero-avatar { order: -1; margin-bottom: 20px; }
+    .hero-avatar { margin-bottom: 20px; }
     .avatar-glow { width: 220px; height: 220px; box-shadow: 0 0 30px rgba(0, 150, 255, 0.4); }
     .main-title { font-size: 2.8rem; text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
     .subtitle { font-size: 0.8rem; letter-spacing: 3px; text-shadow: 0 0 8px rgba(0, 210, 255, 0.6); }
@@ -405,18 +411,4 @@ a:focus, button:focus { outline: none; }
     .content-grid, .social-grid { grid-template-columns: 1fr; }
     .skills-container { grid-template-columns: 1fr; gap: 10px; }
     .glass-card { margin-bottom: 20px; }
-}
-/* Tambahkan di bagian bawah style.css kamu agar warna ikon muncul */
-.html-icon { color: #e34c26; }
-.css-icon { color: #264de4; }
-.js-icon { color: #f7df1e; }
-.py-icon { color: #3776ab; }
-
-/* CSS tambahan untuk memastikan tombol aktif tidak nyangkut */
-.nav-item { transition: all 0.3s; cursor: pointer; }
-.nav-item.active { 
-    color: #fff !important; 
-    background: rgba(0, 102, 255, 0.3); 
-    border-radius: 20px; 
-    padding: 8px 16px;
 }
