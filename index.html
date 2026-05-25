@@ -14,10 +14,10 @@
     <div class="background-overlay"></div>
     <div class="container">
         
-        <nav class="navbar">
+        <nav class="navbar reveal-top">
             <div class="logo">
                 <div class="avatar-mini">
-                    <img src="profil.jpg" alt="Mini Avatar">
+                    <img src="profil.jpg" alt="Avatar Mini">
                 </div>
                 <span>N4MCHA</span>
             </div>
@@ -29,20 +29,20 @@
         </nav>
 
         <header class="hero section-scroll" id="home">
-            <div class="hero-text">
+            <div class="hero-text reveal-left">
                 <span class="subtitle">WELCOME TO MY WORLD</span>
                 <h1 class="main-title">N4MCHA</h1>
                 <h3 class="tagline">Code. Create. Inspire.</h3>
                 <p class="description">
-                    Hello! I am N4MCHA, a passionate developer dedicated to coding, designing, and exploring new horizons in the tech world. I believe that code is not just lines of text, but a powerful tool to solve complex problems and build meaningful digital experiences.
+                    Hello! I'm N4MCHA, a dedicated developer who loves coding, designing, and exploring new horizons in the tech world. I believe that code is more than just lines of text; it's a powerful tool to solve problems and create meaningful digital experiences for others.
                 </p>
                 <a href="#about" class="btn-explore">Explore More <i class="fa-solid fa-arrow-down"></i></a>
             </div>
-            <div class="hero-avatar">
+            <div class="hero-avatar reveal-right">
                 <div class="avatar-glow">
                     <i class="fa-solid fa-crown hologram-crown"></i>
                     <div class="avatar-main">
-                        <img src="profil.jpg" alt="Profile Photo">
+                        <img src="profil.jpg" alt="Foto Profil">
                     </div>
                     <div class="orbit-line"></div>
                 </div>
@@ -56,16 +56,17 @@
                     <h2>ABOUT ME</h2>
                 </div>
                 <p>
-                    I am deeply enthusiastic about technology, with a primary focus on cutting-edge web development. I constantly embrace new challenges, engineer innovative projects, and continuously evolve to become the finest version of myself. Beyond software engineering, I thoroughly enjoy listening to music, gaming, and brainstorming breakthrough concepts over a premium cup of coffee.
+                    I am a passionate individual in the technology sector, particularly in modern web development. I am constantly eager to learn new skills, build remarkable projects, and continuously evolve to become the best version of myself. Beyond software engineering, I enjoy listening to music, playing games, and brainstorming crazy new ideas over a cup of coffee 😎
                 </p>
                 <div class="meta-tags">
                     <span class="tag"><i class="fa-solid fa-user icon-blue"></i> Name: N4MCHA</span>
                     <span class="tag"><i class="fa-solid fa-location-dot icon-blue"></i> Location: Indonesia</span>
                     <span class="tag"><i class="fa-solid fa-code icon-blue"></i> Status: Developer</span>
+                    <span class="tag"><i class="fa-solid fa-headphones icon-blue"></i> Hobby: Listening to music</span>
                 </div>
             </section>
 
-            <section class="card glass-card reveal-up" style="transition-delay: 0.15s;">
+            <section class="card glass-card reveal-up" style="transition-delay: 0.2s;">
                 <div class="card-header">
                     <i class="fa-solid fa-code icon-blue"></i>
                     <h2>SKILLS</h2>
@@ -148,7 +149,7 @@
                     </div>
                     <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
                 </a>
-                
+
                 <a href="https://whatsapp.com/channel/0029VbCEpBk7oQhUGkODCc1e" target="_blank" rel="noopener noreferrer" class="social-bar">
                     <div class="soc-left">
                         <i class="fa-brands fa-whatsapp wa-icon"></i>
@@ -159,7 +160,7 @@
                     </div>
                     <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
                 </a>
-                
+
                 <a href="https://chat.whatsapp.com/EDkZH9VotTc8YbcCsGVYLT?s=cl&p=a&mlu=0" target="_blank" rel="noopener noreferrer" class="social-bar">
                     <div class="soc-left">
                         <i class="fa-solid fa-users wa-group-icon"></i>
@@ -173,40 +174,59 @@
             </div>
         </footer>
 
+        <div class="copyright reveal-up">
+            <p>&copy; 2026 N4MCHA. All Rights Reserved.</p>
+        </div>
+
     </div>
 
     <script>
-        // SCROLL SPY (Navigasi Aktif Otomatis yang Presisi)
+        // 1. SCROLL SPY (Bug Social Media Fix)
         const sections = document.querySelectorAll('.section-scroll');
         const navLinks = document.querySelectorAll('.nav-links a');
 
         window.addEventListener('scroll', () => {
             let current = '';
+            
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - window.innerHeight / 2.5)) {
+                // Sensitivitas scroll disesuaikan agar pas
+                if (pageYOffset >= (sectionTop - window.innerHeight / 3)) {
                     current = section.getAttribute('id');
                 }
             });
 
+            // FIX KHUSUS: Jika user scroll sampai mentok bawah banget, otomatis aktifkan tombol Social
+            if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight - 50) {
+                current = 'social';
+            }
+
+            // Update status menu yang aktif
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
+                if (current && link.getAttribute('href').includes(current)) {
                     link.classList.add('active');
                 }
             });
         });
 
-        // MANUAL CLICK CLICK NAVIGATION ACTIVE
-        const navItems = document.querySelectorAll('.nav-links .nav-item');
-        navItems.forEach(item => {
+        // 2. MENCEGAH TOMBOL NYANGKUT SAAT DIKLIK DI HP
+        // Tombol Navigasi Atas
+        navLinks.forEach(item => {
             item.addEventListener('click', function() {
-                navItems.forEach(nav => nav.classList.remove('active'));
-                this.classList.add('active');
+                setTimeout(() => { this.blur(); }, 150); // Hapus fokus setelah diklik
             });
         });
+        
+        // Tombol Explore More
+        const exploreBtn = document.querySelector('.btn-explore');
+        if (exploreBtn) {
+            exploreBtn.addEventListener('click', function() {
+                setTimeout(() => { this.blur(); }, 150); // Hapus fokus setelah diklik
+            });
+        }
 
-        // INTERSECTION OBSERVER FOR FADE IN SCROLL ANIMATION
+        // 3. ANIMASI SAAT SCROLL BAWAH
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {

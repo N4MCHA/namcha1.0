@@ -1,16 +1,15 @@
-/* --- RESET & BASE STYLE (FIX BUG PUTIH/DELAY MOBIL) --- */
+/* --- RESET & BASE STYLE (Anti Bug Putih/Nyangkut) --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* FIX: Hapus kedipan putih/biru saat tombol ditap di HP Android/iOS */
-    -webkit-tap-highlight-color: transparent !important;
+    -webkit-tap-highlight-color: transparent !important; 
     tap-highlight-color: transparent !important;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 110px;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -21,18 +20,15 @@ body {
     background-attachment: fixed;
     color: #e2e8f0;
     overflow-x: hidden;
-    padding: 20px 20px 80px 20px;
+    padding: 20px 20px 40px 20px;
     position: relative;
 }
 
-/* FIX: Mencegah delay sentuhan 300ms di browser mobile */
-a, button, .nav-item {
-    touch-action: manipulation;
-    outline: none;
-}
-
+/* Hilangkan garis outline saat di-tap */
 a:focus, button:focus { outline: none; }
+a, button { touch-action: manipulation; }
 
+/* FIX BLACK BOX ANDROID */
 .background-overlay {
     position: fixed;
     top: -10%;
@@ -49,17 +45,17 @@ a:focus, button:focus { outline: none; }
     width: 100%;
 }
 
-/* --- ANIMASI AWAL BUKA KELAS ATAS (INTRO EFFECTS) --- */
+/* --- ANIMASI OTOMATIS AWAL BUKA --- */
 @keyframes fadeDown {
-    0% { opacity: 0; transform: translateY(-30px); }
+    0% { opacity: 0; transform: translateY(-40px); }
     100% { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeRight {
-    0% { opacity: 0; transform: translateX(-50px); }
+    0% { opacity: 0; transform: translateX(-60px); }
     100% { opacity: 1; transform: translateX(0); }
 }
 @keyframes fadeLeft {
-    0% { opacity: 0; transform: translateX(50px); }
+    0% { opacity: 0; transform: translateX(60px); }
     100% { opacity: 1; transform: translateX(0); }
 }
 
@@ -67,8 +63,7 @@ a:focus, button:focus { outline: none; }
 .hero-text { animation: fadeRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 .hero-avatar { animation: fadeLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 
-
-/* --- GLASSMORPHISM CARD UTAMA --- */
+/* --- GLASSMORPHISM CARD --- */
 .glass-card {
     background: rgba(255, 255, 255, 0.015);
     backdrop-filter: blur(12px);
@@ -77,9 +72,8 @@ a:focus, button:focus { outline: none; }
     border-radius: 16px;
     padding: 24px;
     margin-bottom: 30px;
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     
-    /* Hardware acceleration akselerasi grafis anti-box hitam */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
@@ -87,27 +81,32 @@ a:focus, button:focus { outline: none; }
 
 @media (hover: hover) {
     .glass-card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(0, 210, 255, 0.4);
-        box-shadow: 0 10px 30px rgba(0, 150, 255, 0.15);
+        transform: translateY(-5px);
+        border-color: rgba(0, 150, 255, 0.4);
+        box-shadow: 0 0 20px rgba(0, 150, 255, 0.15);
     }
 }
+.glass-card:active {
+    transform: translateY(-2px);
+    border-color: rgba(0, 150, 255, 0.5);
+    transition: all 0.1s ease;
+}
 
-/* --- NAVBAR & ANIMASI TOMBOL MENU BARU (COOLER ON STATE) --- */
+/* --- NAVBAR --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 150, 255, 0.25);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 150, 255, 0.3);
     padding: 12px 30px;
     border-radius: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     position: sticky;
     top: 20px;
-    z-index: 150; /* Naik tingkat z-index agar aman */
+    z-index: 100;
 
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -135,29 +134,33 @@ a:focus, button:focus { outline: none; }
 
 .avatar-mini img { width: 100%; height: 100%; object-fit: cover; }
 
-.nav-links { display: flex; gap: 12px; }
+.nav-links { display: flex; gap: 15px; }
 
 .nav-links a {
     color: #94a3b8;
     text-decoration: none;
     font-size: 0.85rem;
-    padding: 8px 18px;
-    border-radius: 25px;
-    border: 1px solid transparent;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: 500;
 }
 
-/* KOREKSI ANIMASI TOMBOL MENU: BIAR LEBIH KEREN & MATANG */
-.nav-links a:hover, .nav-links a.active {
-    color: #ffffff;
-    background: rgba(0, 150, 255, 0.2);
-    border-color: rgba(0, 210, 255, 0.6);
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.6), inset 0 0 8px rgba(0, 210, 255, 0.3);
-    transform: scale(1.04);
+@media (hover: hover) {
+    .nav-links a:hover {
+        color: #fff;
+        background: rgba(0, 102, 255, 0.3);
+        border: 1px solid rgba(0, 150, 255, 0.5);
+        box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+    }
+}
+.nav-links a.active {
+    color: #fff;
+    background: rgba(0, 102, 255, 0.3);
+    border: 1px solid rgba(0, 150, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
 }
 
 /* --- HERO SECTION --- */
@@ -166,7 +169,7 @@ a:focus, button:focus { outline: none; }
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .subtitle {
@@ -202,28 +205,41 @@ a:focus, button:focus { outline: none; }
     font-size: 0.95rem;
 }
 
+/* --- TOMBOL EXPLORE MORE (MODERN SCI-FI & ANTI NYANGKUT) --- */
 .btn-explore {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 28px;
-    border: 1px solid #0066ff;
-    border-radius: 30px;
+    gap: 12px;
+    padding: 14px 32px;
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    border-radius: 50px;
     color: #fff;
     text-decoration: none;
-    background: rgba(0, 102, 255, 0.1);
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 210, 255, 0.05));
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     font-weight: 600;
-    box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
+    letter-spacing: 1px;
 }
 
-.btn-explore:hover {
-    background: #0066ff;
-    box-shadow: 0 0 25px rgba(0, 102, 255, 0.8);
-    transform: translateY(-2px);
+.btn-explore i { transition: transform 0.3s ease; }
+
+@media (hover: hover) {
+    .btn-explore:hover {
+        background: linear-gradient(135deg, rgba(0, 102, 255, 0.4), rgba(0, 210, 255, 0.2));
+        border-color: rgba(0, 210, 255, 0.8);
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        transform: translateY(-3px);
+    }
+    .btn-explore:hover i { transform: translateY(3px); }
 }
 
-/* --- HERO AVATAR GLOW & FIXED FLOATING CROWN --- */
+.btn-explore:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    transition: all 0.1s ease;
+}
+
+/* --- AVATAR GLOW EFFECT --- */
 .hero-avatar {
     display: flex;
     justify-content: center;
@@ -242,33 +258,33 @@ a:focus, button:focus { outline: none; }
     align-items: center;
 }
 
-/* FIX: Mahkota Hologram diletakkan z-index seimbang agar tidak glitch dengan sticky navbar */
+/* STYLING MAHKOTA HOLOGRAM BERGERAK */
 .hologram-crown {
     position: absolute;
-    top: -50px; 
+    top: -45px; 
     left: 50%;
-    font-size: 3.2rem;
-    color: rgba(0, 210, 255, 0.95);
+    font-size: 3rem;
+    color: rgba(0, 210, 255, 0.9); 
     text-shadow: 
         0 0 15px rgba(0, 210, 255, 1),
         0 0 30px rgba(0, 102, 255, 0.7),
         0 0 10px rgba(255, 255, 255, 0.5);
-    z-index: 80; /* Dibawah navbar (150) tapi diatas avatar */
+    z-index: 10;
     animation: 
         crownFloat 4s ease-in-out infinite,
-        hologramFlicker 2.5s linear infinite;
+        hologramFlicker 2s linear infinite;
     transform-origin: center bottom;
 }
 
 @keyframes crownFloat {
-    0%, 100% { transform: translateX(-50%) translateY(0) rotate(-4deg); }
-    50% { transform: translateX(-50%) translateY(-14px) rotate(4deg); }
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+    50% { transform: translateX(-50%) translateY(-15px) rotate(5deg); }
 }
 
 @keyframes hologramFlicker {
-    0%, 100% { opacity: 0.95; }
-    5%, 15%, 25%, 55%, 75% { opacity: 0.8; }
-    10%, 20%, 30%, 60%, 80% { opacity: 1; }
+    0%, 100% { opacity: 0.9; }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% { opacity: 0.75; }
+    10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% { opacity: 0.95; }
 }
 
 .avatar-main {
@@ -285,9 +301,9 @@ a:focus, button:focus { outline: none; }
     position: absolute;
     width: 115%;
     height: 115%;
-    border: 1px dashed rgba(0, 210, 255, 0.3);
+    border: 1px dashed rgba(0, 210, 255, 0.4);
     border-radius: 50%;
-    animation: rotateOrbit 25s linear infinite;
+    animation: rotateOrbit 20s linear infinite;
 }
 
 @keyframes rotateOrbit {
@@ -295,7 +311,7 @@ a:focus, button:focus { outline: none; }
     to { transform: rotate(360deg); }
 }
 
-/* --- CARDS INTERNAL STYLING --- */
+/* --- CARDS INTERNAL --- */
 .card-header {
     display: flex;
     align-items: center;
@@ -305,10 +321,10 @@ a:focus, button:focus { outline: none; }
 
 .card-header h2 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: #fff;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .icon-blue {
@@ -320,20 +336,20 @@ a:focus, button:focus { outline: none; }
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 25px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .dynamic-height p {
     color: #cbd5e1;
     font-size: 0.9rem;
-    line-height: 1.65;
+    line-height: 1.6;
     margin-bottom: 25px;
 }
 
 .meta-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 
 .tag {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(0, 150, 255, 0.2);
     padding: 8px 16px;
     border-radius: 30px;
@@ -351,7 +367,7 @@ a:focus, button:focus { outline: none; }
     gap: 20px;
 }
 
-.skill-item { margin-bottom: 12px; display: flex; flex-direction: column; }
+.skill-item { margin-bottom: 10px; display: flex; flex-direction: column; }
 
 .skill-info {
     display: flex;
@@ -382,7 +398,7 @@ a:focus, button:focus { outline: none; }
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
 }
 
-/* --- SOCIAL MEDIA SECTION (2X2 GRID SYSTEM) --- */
+/* --- SOCIAL MEDIA --- */
 .social-section { display: block; width: 100%; clear: both; }
 
 .social-grid {
@@ -397,45 +413,60 @@ a:focus, button:focus { outline: none; }
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(0, 150, 255, 0.18);
+    border: 1px solid rgba(0, 150, 255, 0.2);
     padding: 16px 20px;
-    border-radius: 14px;
+    border-radius: 12px;
     text-decoration: none;
     color: #fff;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all 0.3s ease;
 }
 
 @media (hover: hover) {
     .social-bar:hover {
-        background: rgba(0, 150, 255, 0.07);
-        border-color: rgba(0, 210, 255, 0.5);
-        transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(0, 150, 255, 0.15);
+        background: rgba(0, 150, 255, 0.08);
+        border-color: rgba(0, 150, 255, 0.6);
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 150, 255, 0.2);
     }
+}
+.social-bar:active {
+    background: rgba(0, 150, 255, 0.15);
+    border-color: rgba(0, 150, 255, 0.8);
+    transform: scale(0.98);
+    transition: all 0.1s ease;
 }
 
 .soc-left { display: flex; align-items: center; gap: 15px; }
-.soc-left i { font-size: 2rem; }
+.soc-left i { font-size: 2.2rem; }
 
-/* WARNA BRAND LOGO SOSIAL MEDIA */
 .ig-icon {
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.tt-icon { color: #fff; filter: drop-shadow(1px 1px 0px #fd1c5c) drop-shadow(-1px -1px 0px #1cc7fd); }
-.wa-icon { color: #25D366; }
-.wa-group-icon { color: #00e676; }
+.tt-icon { color: #fff; filter: drop-shadow(2px 0px 0px #fd1c5c) drop-shadow(-2px 0px 0px #1cc7fd); }
+.wa-icon { color: #25D366; filter: drop-shadow(0 0 5px rgba(37, 211, 102, 0.4)); }
+.wa-group-icon { color: #00e676; filter: drop-shadow(0 0 5px rgba(0, 230, 118, 0.4)); }
 
-.soc-left h4 { font-size: 0.95rem; font-weight: 600; }
+.soc-left h4 { font-size: 1rem; font-weight: 600; }
 .soc-left p { font-size: 0.8rem; color: #94a3b8; }
-.arrow-icon { color: #00d2ff; font-size: 0.9rem; text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); }
+.arrow-icon { color: #00d2ff; font-size: 1rem; text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); }
 
-/* --- ENHANCED ANIMASI SCROLL BAWAH (REVEAL UP) --- */
+/* --- COPYRIGHT (BARU) --- */
+.copyright {
+    text-align: center;
+    padding: 30px 0 10px 0;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* --- ANIMASI SCROLL BAWAH (REVEAL UP) --- */
 .reveal-up {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .reveal-up.show {
     opacity: 1;
@@ -444,33 +475,25 @@ a:focus, button:focus { outline: none; }
 
 
 /* =========================================
-   RESPONSIVE MEDIA QUERIES (MODE HP POTRAIT)
+   RESPONSIVE MEDIA QUERIES (MODE HP)
    ========================================= */
 @media (max-width: 768px) {
     body { padding: 15px 15px 60px 15px; }
     
-    /* Navbar Adjustment Mobile */
     .navbar { 
         padding: 10px 20px; 
-        margin-bottom: 35px; 
+        margin-bottom: 25px; 
         border-radius: 30px; 
-        top: 15px;
     }
     
-    .nav-links { gap: 6px; }
+    .nav-links { gap: 8px; }
     .nav-links a { font-size: 0.75rem; padding: 6px 12px; }
 
-    /* FIX LAYOUT: Beri ruang di atas avatar mobile agar mahkota hologram tidak tabrakan dengan Navbar */
-    .hero { 
-        grid-template-columns: 1fr; 
-        text-align: center; 
-        gap: 35px;
-        padding-top: 25px; /* Memberikan space anti tertutup navbar */
-    }
-    .hero-avatar { order: -1; }
+    .hero { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+    .hero-avatar { order: -1; margin-bottom: 20px; }
     
     .avatar-glow { width: 220px; height: 220px; box-shadow: 0 0 30px rgba(0, 150, 255, 0.4); }
-    .hologram-crown { font-size: 2.6rem; top: -40px; } /* Menyesuaikan skala mahkota di HP */
+    .hologram-crown { font-size: 2.5rem; top: -35px; }
     
     .main-title { font-size: 2.8rem; text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
     .subtitle { font-size: 0.8rem; letter-spacing: 3px; text-shadow: 0 0 8px rgba(0, 210, 255, 0.6); }
