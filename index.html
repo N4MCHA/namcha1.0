@@ -247,17 +247,73 @@
         
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    new Typed("#typing", {
-  strings: [
-    "Frontend Developer",
-    "Cyberpunk Designer",
-    "CSS Enjoyer",
-    "Night Coder"
-  ],
-  typeSpeed: 60,
-  backSpeed: 40,
-  loop: true
+    <!-- Typed.js library -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script>
+// SCROLL SPY
+const sections = document.querySelectorAll('.section-scroll');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - window.innerHeight / 3) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        current = 'social';
+    }
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+        }
+    });
 });
+
+// EXPLORE BUTTON
+const exploreBtn = document.getElementById('explore-btn');
+if (exploreBtn) {
+    exploreBtn.addEventListener('click', function () {
+        this.classList.add('tap-active');
+        setTimeout(() => {
+            this.classList.remove('tap-active');
+            this.blur();
+        }, 300);
+    });
+}
+
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+// TYPING EFFECT (NEON BLUE NYALA 🔵✨)
+new Typed("#typing", {
+    strings: [
+        "Frontend Developer",
+        "Cyberpunk Designer",
+        "CSS Enjoyer",
+        "Night Coder"
+    ],
+    typeSpeed: 60,
+    backSpeed: 40,
+    loop: true
+});
+</script>
 </body>
 </html>
