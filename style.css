@@ -281,8 +281,8 @@ a, button { touch-action: manipulation; }
 }
 
 @keyframes crownFloat {
-    0%, 100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-8px) rotate(2deg); }
+    0%, 100% { transform: translateX(0) rotate(-5deg); }
+    50% { transform: translateX(-8px) rotate(2deg); }
 }
 
 .avatar-main {
