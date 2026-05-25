@@ -472,6 +472,15 @@ a, button { touch-action: manipulation; }
 }
 
 /* --- TYPING EFFECT --- */
+.tagline {
+    color: #00d2ff;
+}
+
+#typed-text {
+    color: #00d2ff;
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.8),
+                 0 0 16px rgba(0, 210, 255, 0.6);
+}
 .cursor {
     display: inline-block;
     width: 3px;
@@ -479,7 +488,7 @@ a, button { touch-action: manipulation; }
     background-color: #00d2ff;
     margin-left: 4px;
     animation: blink 0.8s infinite;
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
 }
 .cursor.typing {
     animation: blink 1s infinite;
