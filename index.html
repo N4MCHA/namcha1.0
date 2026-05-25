@@ -32,7 +32,9 @@
             <div class="hero-text reveal-left">
                 <span class="subtitle">WELCOME TO MY WORLD</span>
                 <h1 class="main-title">N4MCHA</h1>
-                <h3 class="tagline"><span id="typed-text"></span><span class="cursor">|</span></h3>
+                <h3 class="tagline">
+                <span id="typing"></span> 
+                </h3>
                 <p class="description">
                     Hello! I'm N4MCHA, a dedicated developer who loves coding, designing, and exploring new horizons in the tech world. I believe that code is more than just lines of text; it's a powerful tool to solve problems and create meaningful digital experiences for others.
                 </p>
@@ -179,6 +181,7 @@
         </div>
 
     </div>
+
     <script>
         // 1. SCROLL SPY (Bug Social Media Fix)
         const sections = document.querySelectorAll('.section-scroll');
@@ -242,57 +245,19 @@
         const hiddenElements = document.querySelectorAll('.reveal-up');
         hiddenElements.forEach((el) => observer.observe(el));
         
-        // 4. TYPING EFFECT
-        const typedTextSpan = document.getElementById("typed-text");
-        const cursorSpan = document.querySelector(".cursor");
-
-        // Daftar teks yang akan diketik otomatis
-        const textArray = [
-            "CSS Enjoyer.", 
-            "Night Coder.", 
-            "Creative Developer.", 
-            "Tech Enthusiast.",
-            "Logic Builder.",
-            "Visual Artist."
-        ];
-        
-        const typingDelay = 100;
-        const erasingDelay = 50;
-        const newTextDelay = 2000; // Waktu jeda sebelum menghapus teks
-        let textArrayIndex = 0;
-        let charIndex = 0;
-
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } 
-            else {
-                cursorSpan.classList.remove("typing");
-                setTimeout(erase, newTextDelay);
-            }
-        }
-
-        function erase() {
-            if (charIndex > 0) {
-                if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } 
-            else {
-                cursorSpan.classList.remove("typing");
-                textArrayIndex++;
-                if(textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay + 1100);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            if(textArray.length) setTimeout(type, newTextDelay + 250);
         });
+
+new Typed("#typing", {
+  strings: [
+    "Frontend Developer",
+    "Cyberpunk Designer",
+    "CSS Enjoyer",
+    "Night Coder"
+  ],
+  typeSpeed: 60,
+  backSpeed: 40,
+  loop: true
+});
     </script>
 </body>
 </html>
