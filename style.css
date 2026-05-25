@@ -471,6 +471,25 @@ a, button { touch-action: manipulation; }
     transform: translateY(0);
 }
 
+/* --- TYPING EFFECT --- */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: #00d2ff;
+    margin-left: 4px;
+    animation: blink 0.8s infinite;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+}
+.cursor.typing {
+    animation: none;
+}
+@keyframes blink {
+    0% { background-color: #00d2ff; color: #00d2ff; }
+    49% { background-color: #00d2ff; color: #00d2ff; }
+    50% { background-color: transparent; color: transparent; }
+    99% { background-color: transparent; color: transparent; }
+    100% { background-color: #00d2ff; color: #00d2ff; }
+}
 
 /* =========================================
    RESPONSIVE MEDIA QUERIES (MODE HP)
@@ -502,23 +521,4 @@ a, button { touch-action: manipulation; }
     .content-grid, .social-grid { grid-template-columns: 1fr; }
     .skills-container { grid-template-columns: 1fr; gap: 10px; }
     .glass-card { margin-bottom: 20px; }
-}
-/* --- TYPING EFFECT --- */
-.cursor {
-    display: inline-block;
-    width: 3px;
-    background-color: #00d2ff;
-    margin-left: 4px;
-    animation: blink 0.8s infinite;
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
-}
-.cursor.typing {
-    animation: none;
-}
-@keyframes blink {
-    0% { background-color: #00d2ff; color: #00d2ff; }
-    49% { background-color: #00d2ff; color: #00d2ff; }
-    50% { background-color: transparent; color: transparent; }
-    99% { background-color: transparent; color: transparent; }
-    100% { background-color: #00d2ff; color: #00d2ff; }
 }
