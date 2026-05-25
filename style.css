@@ -1,10 +1,9 @@
-/* --- RESET & BASE STYLE --- */
+/* --- RESET & BASE STYLE & FIX BUG PUTIH/DELAY HP --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* [MODIFIKASI] Fix bug putih-putih on tap HP */
-    outline: none; /* [MODIFIKASI] Hapus outline fokus */
+    -webkit-tap-highlight-color: transparent !important; /* Fix putih berkedip */
 }
 
 html {
@@ -20,11 +19,16 @@ body {
     background-attachment: fixed;
     color: #e2e8f0;
     overflow-x: hidden;
-    padding: 20px 20px 80px 20px;
+    padding: 0 20px 80px 20px;
     position: relative;
 }
 
-/* FIX BLACK BOX ANDROID */
+/* Fix delay saat disentuh di HP */
+a, button, .nav-item, .btn-explore, .social-bar {
+    touch-action: manipulation;
+    outline: none;
+}
+
 .background-overlay {
     position: fixed;
     top: -10%;
@@ -41,66 +45,7 @@ body {
     width: 100%;
 }
 
-/* --- ANIMASI OTOMATIS AWAL BUKA --- */
-@keyframes fadeDown {
-    0% { opacity: 0; transform: translateY(-40px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeRight {
-    0% { opacity: 0; transform: translateX(-60px); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-@keyframes fadeLeft {
-    0% { opacity: 0; transform: translateX(60px); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-
-.navbar { animation: fadeDown 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-.hero-text { animation: fadeRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-.hero-avatar { animation: fadeLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-
-
-/* --- GLASSMORPHISM CARD --- */
-.glass-card {
-    background: rgba(255, 255, 255, 0.015);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 150, 255, 0.15);
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
-}
-
-/* Hover Khusus Mouse PC */
-@media (hover: hover) {
-    .glass-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(0, 150, 255, 0.4);
-        box-shadow: 0 0 20px rgba(0, 150, 255, 0.15);
-    }
-}
-/* Efek Sentuh HP yang langsung mati */
-.glass-card:active {
-    transform: translateY(-2px);
-    border-color: rgba(0, 150, 255, 0.5);
-    transition: all 0.1s ease;
-}
-
-/* --- GLOW JUDUL KARTU (Baru) --- */
-.card-header h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
-    color: #fff;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); /* [MODIFIKASI] Teks bercahaya biru matching */
-}
-
-/* --- NAVBAR --- */
+/* --- NAVBAR HIDDEN & VISIBLE LOGIC --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -115,10 +60,19 @@ body {
     position: sticky;
     top: 20px;
     z-index: 100;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); /* Efek mulus */
+}
 
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
+.hidden-nav {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50px);
+}
+
+.visible-nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .logo {
@@ -127,18 +81,9 @@ body {
     gap: 12px;
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    font-size: 1.1rem; /* Sedikit dikecilkan agar muat */
+    font-size: 1.2rem;
     color: #fff;
     letter-spacing: 2px;
-}
-
-/* [MODIFIKASI] STYLING TEKS ROLE BERCAHAYA BIRU */
-.role-text {
-    font-size: 0.85rem;
-    color: #00d2ff; /* Warna biru matching */
-    margin-left: 8px; /* Jarak dari N4MCHA */
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.7); /* Glow Effect */
-    font-weight: 500;
 }
 
 .avatar-mini {
@@ -159,13 +104,12 @@ body {
     font-size: 0.85rem;
     padding: 8px 16px;
     border-radius: 20px;
-    transition: all 0.2s ease; /* Transisi lebih cepat */
+    transition: all 0.3s;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-/* [MODIFIKASI] FIX DELAY NAVIGASI: Perilaku ketukan dioptimalkan */
 @media (hover: hover) {
     .nav-links a:hover {
         color: #fff;
@@ -174,38 +118,36 @@ body {
         box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
     }
 }
-.nav-links a.active,
-.nav-links a:active {
+.nav-links a.active {
     color: #fff;
     background: rgba(0, 102, 255, 0.3);
     border: 1px solid rgba(0, 150, 255, 0.5);
     box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
 }
 
-/* --- HERO SECTION --- */
+/* --- LANDING PAGE (HERO SECTION TERFOKUS) --- */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-/* [MODIFIKASI] Full Screen Wrapper untuk Splash */
-.hero-full-section {
-    min-height: calc(100vh - 100px); /* Penuhi layar saat splash */
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 40px;
 }
 
-.subtitle {
-    font-family: 'Orbitron', sans-serif;
-    color: #00d2ff;
-    letter-spacing: 4px;
-    font-size: 0.85rem;
-    margin-bottom: 10px;
-    display: block;
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.7);
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Teks Role Developer Baru */
+.title-group {
+    margin-bottom: 15px;
 }
 
 .main-title {
@@ -214,50 +156,66 @@ body {
     font-weight: 700;
     letter-spacing: 3px;
     color: #ffffff;
-    margin-bottom: 5px;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
 }
 
-.tagline {
-    font-size: 1.3rem;
-    color: #94a3b8;
-    margin-bottom: 20px;
+.role-badge {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #00d2ff;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.9), 0 0 5px rgba(0, 210, 255, 0.5);
+    padding: 5px 15px;
+    border: 1px solid rgba(0, 210, 255, 0.5);
+    border-radius: 20px;
+    background: rgba(0, 102, 255, 0.1);
+    box-shadow: inset 0 0 10px rgba(0, 210, 255, 0.2);
 }
 
 .description {
     color: #cbd5e1;
     line-height: 1.7;
     margin-bottom: 30px;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    max-width: 600px;
 }
 
-/* [MODIFIKASI] Diubah menjadi Button agar JS berfungsi */
 .btn-explore {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 28px;
-    border: 1px solid #0066ff;
+    padding: 14px 32px;
+    border: 1px solid #00d2ff;
     border-radius: 30px;
     color: #fff;
     text-decoration: none;
-    background: rgba(0, 102, 255, 0.1);
+    background: rgba(0, 102, 255, 0.2);
     transition: all 0.3s ease;
     font-weight: 600;
-    box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+    font-size: 1.1rem;
+    animation: bounce 2s infinite; /* Efek melompat-lompat kecil */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
 }
 
 @media (hover: hover) {
     .btn-explore:hover {
-        background: #0066ff;
-        box-shadow: 0 0 25px rgba(0, 102, 255, 0.8);
+        background: #00d2ff;
+        color: #000; /* Teks jadi gelap saat nyala biar kontras */
+        box-shadow: 0 0 30px rgba(0, 210, 255, 0.8);
+        animation: none; /* Matikan bounce saat di-hover */
+        transform: translateY(-2px);
     }
 }
 .btn-explore:active {
-    background: #0066ff;
     transform: scale(0.95);
     transition: all 0.1s ease;
 }
@@ -267,6 +225,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .avatar-glow {
@@ -281,35 +240,26 @@ body {
     align-items: center;
 }
 
-/* STYLING MAHKOTA HOLOGRAM BERGERAK */
 .hologram-crown {
     position: absolute;
     top: -45px; 
     left: 50%;
-    font-size: 3rem;
-    color: rgba(0, 210, 255, 0.9); 
-    
+    font-size: 3.5rem;
+    color: rgba(0, 210, 255, 0.9);
     text-shadow: 
         0 0 15px rgba(0, 210, 255, 1),
         0 0 30px rgba(0, 102, 255, 0.7),
         0 0 10px rgba(255, 255, 255, 0.5);
-    
     z-index: 10;
-    
     animation: 
         crownFloat 4s ease-in-out infinite,
         hologramFlicker 2s linear infinite;
-        
     transform-origin: center bottom;
 }
 
 @keyframes crownFloat {
-    0%, 100% { 
-        transform: translateX(-50%) translateY(0) rotate(-5deg); 
-    }
-    50% { 
-        transform: translateX(-50%) translateY(-15px) rotate(5deg); 
-    }
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+    50% { transform: translateX(-50%) translateY(-15px) rotate(5deg); }
 }
 
 @keyframes hologramFlicker {
@@ -342,7 +292,35 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* --- CARDS INTERNAL --- */
+/* --- GLASSMORPHISM CARD --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.015);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 150, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+@media (hover: hover) {
+    .glass-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 150, 255, 0.4);
+        box-shadow: 0 0 20px rgba(0, 150, 255, 0.15);
+    }
+}
+.glass-card:active {
+    transform: translateY(-2px);
+    border-color: rgba(0, 150, 255, 0.5);
+    transition: all 0.1s ease;
+}
+
+/* --- CARDS INTERNAL (DENGAN GLOW TEKS) --- */
 .card-header {
     display: flex;
     align-items: center;
@@ -350,9 +328,19 @@ body {
     margin-bottom: 20px;
 }
 
+/* Penambahan Glow untuk Header */
+.glow-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
 .icon-blue {
     color: #00d2ff;
-    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
 }
 
 .content-grid {
@@ -424,11 +412,17 @@ body {
 /* --- SOCIAL MEDIA --- */
 .social-section { display: block; width: 100%; clear: both; }
 
+/* Grid diubah agar WhatsApp masuk rapi di tengah layar jika 3 item */
 .social-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     width: 100%;
+}
+
+/* WhatsApp agar memanjang di bawah layar HP */
+.social-bar:last-child {
+    grid-column: 1 / -1; 
 }
 
 .social-bar {
@@ -452,6 +446,7 @@ body {
         box-shadow: 0 0 20px rgba(0, 150, 255, 0.2);
     }
 }
+
 .social-bar:active {
     background: rgba(0, 150, 255, 0.15);
     border-color: rgba(0, 150, 255, 0.8);
@@ -462,18 +457,14 @@ body {
 .soc-left { display: flex; align-items: center; gap: 15px; }
 .soc-left i { font-size: 2.2rem; }
 
+/* Warna Brand */
 .ig-icon {
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .tt-icon { color: #fff; filter: drop-shadow(2px 0px 0px #fd1c5c) drop-shadow(-2px 0px 0px #1cc7fd); }
-
-/* [MODIFIKASI] WHATSAPP ICON STYLE BARU */
-.whatsapp-icon {
-    color: #25D366; /* Warna Hijau WhatsApp */
-    filter: drop-shadow(0 0 10px rgba(37, 211, 102, 0.6)); /* Glow Hijau */
-}
+.wa-icon { color: #25D366; filter: drop-shadow(0 0 5px rgba(37, 211, 102, 0.5)); }
 
 .soc-left h4 { font-size: 1rem; font-weight: 600; }
 .soc-left p { font-size: 0.8rem; color: #94a3b8; }
@@ -490,66 +481,30 @@ body {
     transform: translateY(0);
 }
 
-/* [MODIFIKASI] ANIMASI TRANSISI SPLASH */
-@keyframes fadeOut {
-    0% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-40px); }
-}
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(40px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-.fade-out {
-    animation: fadeOut 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-.fade-in {
-    opacity: 1 !important; /* Pastikan terlihat */
-    pointer-events: auto !important;
-    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-
 /* =========================================
    RESPONSIVE MEDIA QUERIES (MODE HP)
    ========================================= */
 @media (max-width: 768px) {
-    body { padding: 15px 15px 60px 15px; }
+    body { padding: 0 15px 60px 15px; }
     
     .navbar { 
         padding: 10px 20px; 
         margin-bottom: 25px; 
         border-radius: 30px; 
-        top: 10px;
     }
     
-    .logo {
-        flex-direction: row; /* Pastikan mendatar di HP */
-        gap: 8px;
-        font-size: 1rem;
-    }
-    .role-text { font-size: 0.75rem; margin-left: 5px; }
-
     .nav-links { gap: 8px; }
-    .nav-links a { font-size: 0.7rem; padding: 5px 10px; gap: 4px; }
-    .nav-links a i { font-size: 0.8rem; }
+    .nav-links a { font-size: 0.75rem; padding: 6px 12px; }
 
-    .hero { grid-template-columns: 1fr; text-align: center; gap: 20px; }
-    .hero-wrapper { min-height: calc(100vh - 100px); }
-    .hero-avatar { order: -1; margin-bottom: 20px; }
-    
+    .hero-content { padding-top: 20px; }
     .avatar-glow { width: 220px; height: 220px; box-shadow: 0 0 30px rgba(0, 150, 255, 0.4); }
-    .hologram-crown { font-size: 2.5rem; top: -35px; }
+    .hologram-crown { font-size: 2.8rem; top: -35px; }
     
     .main-title { font-size: 2.8rem; text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
-    .subtitle { font-size: 0.8rem; letter-spacing: 3px; text-shadow: 0 0 8px rgba(0, 210, 255, 0.6); }
-    .description { font-size: 0.9rem; margin-bottom: 20px; }
-    .btn-explore { font-size: 0.9rem; padding: 10px 24px; }
+    .role-badge { font-size: 0.9rem; margin-bottom: 15px; }
+    .description { font-size: 0.9rem; margin-bottom: 40px; }
 
     .content-grid, .social-grid { grid-template-columns: 1fr; }
     .skills-container { grid-template-columns: 1fr; gap: 10px; }
     .glass-card { margin-bottom: 20px; }
-    
-    .soc-left i { font-size: 1.8rem; }
-    .soc-left h4 { font-size: 0.9rem; }
-    .soc-left p { font-size: 0.75rem; }
 }

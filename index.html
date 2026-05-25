@@ -12,163 +12,172 @@
 </head>
 <body id="home">
     <div class="background-overlay"></div>
+    
+    <nav class="navbar hidden-nav" id="main-navbar">
+        <div class="logo">
+            <div class="avatar-mini">
+                <img src="profil.jpg" alt="Avatar Mini">
+            </div>
+            <span>N4MCHA</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> About</a>
+            <a href="#social" class="nav-item"><i class="fa-solid fa-share-nodes"></i> Social</a>
+        </div>
+    </nav>
+
+    <header class="hero section-scroll" id="home">
+        <div class="hero-content reveal-up">
+            <div class="hero-avatar">
+                <div class="avatar-glow">
+                    <i class="fa-solid fa-crown hologram-crown"></i>
+                    <div class="avatar-main">
+                        <img src="profil.jpg" alt="Foto Profil">
+                    </div>
+                    <div class="orbit-line"></div>
+                </div>
+            </div>
+            
+            <div class="title-group">
+                <h1 class="main-title">N4MCHA</h1>
+                <span class="role-badge">ROLE: DEVELOPER</span>
+            </div>
+            
+            <p class="description">
+                Halo! Gue N4MCHA, seorang developer yang suka ngoding, desain, dan eksplor hal baru di dunia teknologi. Gue percaya kalau kode bukan cuma baris-baris teks, tapi cara buat nyelesaiin masalah dan bikin sesuatu yang bermanfaat buat orang lain.
+            </p>
+            
+            <a href="#about" class="btn-explore" id="explore-btn">Explore More <i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+    </header>
+
     <div class="container">
-        
-        <div id="navbar-container" class="navbar-wrapper section-scroll" style="display: none; opacity: 0; pointer-events: none;">
-            <nav class="navbar reveal-top">
-                <div class="logo">
-                    <div class="avatar-mini">
-                        <img src="profil.jpg" alt="Avatar Mini">
-                    </div>
-                    <span>N4MCHA</span>
-                    <span class="role-text">ROLE: DEVELOPER</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a>
-                    <a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> About</a>
-                    <a href="#social" class="nav-item"><i class="fa-solid fa-share-nodes"></i> Social</a>
-                </div>
-            </nav>
-        </div>
-
-        <div id="hero-wrapper" class="hero-full-section section-scroll">
-            <header class="hero" id="home">
-                <div class="hero-text reveal-left">
-                    <span class="subtitle">WELCOME TO MY WORLD</span>
-                    <h1 class="main-title">N4MCHA</h1>
-                    <h3 class="tagline">Code. Create. Inspire.</h3>
-                    <p class="description">
-                        Halo! Gue N4MCHA, seorang developer yang suka ngoding, desain, dan eksplor hal baru di dunia teknologi. Gue percaya kalau kode bukan cuma baris-baris teks, tapi cara buat nyelesaiin masalah dan bikin sesuatu yang bermanfaat buat orang lain.
-                    </p>
-                    <button id="btn-explore" class="btn-explore nav-item">Explore More <i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-                <div class="hero-avatar reveal-right">
-                    <div class="avatar-glow">
-                        <i class="fa-solid fa-crown hologram-crown"></i>
-                        <div class="avatar-main">
-                            <img src="profil.jpg" alt="Foto Profil">
-                        </div>
-                        <div class="orbit-line"></div>
-                    </div>
-                </div>
-            </header>
-        </div>
-
-        <div id="main-content-wrapper" class="main-content-wrapper section-scroll" style="display: none; opacity: 0; pointer-events: none;">
-            <main class="content-grid">
-                <section id="about" class="card glass-card dynamic-height section-scroll reveal-up">
-                    <div class="card-header">
-                        <i class="fa-solid fa-user-tie icon-blue"></i>
-                        <h2>ABOUT ME</h2> </div>
-                    <p>
-                        Gue adalah seseorang yang passionate di bidang teknologi, terutama di web development. Gue selalu belajar hal baru, membangun project keren, dan terus berkembang buat jadi versi terbaik dari diri sendiri. Selain ngoding, gue juga suka dengerin musik, main game, dan ngopi sambil mikirin ide-ide gila berikutnya 😎
-                    </p>
-                    <div class="meta-tags">
-                        <span class="tag"><i class="fa-solid fa-user icon-blue"></i> Name: N4MCHA</span>
-                        <span class="tag"><i class="fa-solid fa-location-dot icon-blue"></i> Location: Indonesia</span>
-                        <span class="tag"><i class="fa-solid fa-code icon-blue"></i> Status: Developer</span>
-                    </div>
-                </section>
-
-                <section class="card glass-card reveal-up" style="transition-delay: 0.2s;">
-                    <div class="card-header">
-                        <i class="fa-solid fa-code icon-blue"></i>
-                        <h2>SKILLS</h2> </div>
-                    <div class="skills-container">
-                        <div class="skills-col">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="18" alt="HTML"> HTML</span>
-                                    <span>90%</span>
-                                </div>
-                                <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="18" alt="CSS"> CSS</span>
-                                    <span>85%</span>
-                                </div>
-                                <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="18" alt="JS"> JavaScript</span>
-                                    <span>80%</span>
-                                </div>
-                                <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
-                            </div>
-                        </div>
-                        <div class="skills-col">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="18" alt="Python"> Python</span>
-                                    <span>75%</span>
-                                </div>
-                                <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" width="18" alt="PHP"> PHP</span>
-                                    <span>70%</span>
-                                </div>
-                                <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width="18" alt="C++"> C++</span>
-                                    <span>65%</span>
-                                </div>
-                                <div class="progress-bar"><div class="progress" style="width: 65%;"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <footer id="social" class="social-section glass-card section-scroll reveal-up">
+        <main class="content-grid">
+            <section id="about" class="card glass-card dynamic-height section-scroll reveal-up">
                 <div class="card-header">
-                    <i class="fa-solid fa-share-nodes icon-blue"></i>
-                    <h2>SOCIAL MEDIA</h2> </div>
-                <div class="social-grid">
-                    <a href="https://www.instagram.com/wildandindun__?utm_source=qr&igsh=Y2tlYnhldzVnbGp6" target="_blank" rel="noopener noreferrer" class="social-bar">
-                        <div class="soc-left">
-                            <i class="fa-brands fa-instagram ig-icon"></i>
-                            <div>
-                                <h4>Instagram</h4>
-                                <p>@wildandindun__</p>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@n4mcha4?_r=1&_t=ZS-96dP2MwXE04" target="_blank" rel="noopener noreferrer" class="social-bar">
-                        <div class="soc-left">
-                            <i class="fa-brands fa-tiktok tt-icon"></i>
-                            <div>
-                                <h4>TikTok</h4>
-                                <p>@n4mcha4</p>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-                    </a>
-
-                    <a href="https://whatsapp.com/channel/0029VbCEpBk7oQhUGkODCc1e" target="_blank" rel="noopener noreferrer" class="social-bar social-whatsapp">
-                        <div class="soc-left">
-                            <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
-                            <div>
-                                <h4>WhatsApp Channel</h4>
-                                <p>Ikuti Saluran Saya</p>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-                    </a>
+                    <i class="fa-solid fa-user-tie icon-blue"></i>
+                    <h2 class="glow-text">ABOUT ME</h2>
                 </div>
-            </footer>
-        </div>
+                <p>
+                    Gue adalah seseorang yang passionate di bidang teknologi, terutama di web development. Gue selalu belajar hal baru, membangun project keren, dan terus berkembang buat jadi versi terbaik dari diri sendiri. Selain ngoding, gue juga suka <strong>listening to music</strong>, main game, dan ngopi sambil mikirin ide-ide gila berikutnya 😎
+                </p>
+                <div class="meta-tags">
+                    <span class="tag"><i class="fa-solid fa-user icon-blue"></i> Name: N4MCHA</span>
+                    <span class="tag"><i class="fa-solid fa-location-dot icon-blue"></i> Location: Indonesia</span>
+                    <span class="tag"><i class="fa-solid fa-headphones icon-blue"></i> Hobby: Listening to music</span>
+                </div>
+            </section>
+
+            <section class="card glass-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="card-header">
+                    <i class="fa-solid fa-code icon-blue"></i>
+                    <h2 class="glow-text">SKILLS</h2>
+                </div>
+                <div class="skills-container">
+                    <div class="skills-col">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="18" alt="HTML"> HTML</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="18" alt="CSS"> CSS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="18" alt="JS"> JavaScript</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                        </div>
+                    </div>
+                    <div class="skills-col">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="18" alt="Python"> Python</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" width="18" alt="PHP"> PHP</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width="18" alt="C++"> C++</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width: 65%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="social" class="social-section glass-card section-scroll reveal-up">
+            <div class="card-header">
+                <i class="fa-solid fa-share-nodes icon-blue"></i>
+                <h2 class="glow-text">SOCIAL MEDIA</h2>
+            </div>
+            <div class="social-grid">
+                <a href="https://www.instagram.com/wildandindun__?utm_source=qr&igsh=Y2tlYnhldzVnbGp6" target="_blank" rel="noopener noreferrer" class="social-bar">
+                    <div class="soc-left">
+                        <i class="fa-brands fa-instagram ig-icon"></i>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p>@wildandindun__</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+                </a>
+                <a href="https://www.tiktok.com/@n4mcha4?_r=1&_t=ZS-96dP2MwXE04" target="_blank" rel="noopener noreferrer" class="social-bar">
+                    <div class="soc-left">
+                        <i class="fa-brands fa-tiktok tt-icon"></i>
+                        <div>
+                            <h4>TikTok</h4>
+                            <p>@n4mcha4</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029VbCEpBk7oQhUGkODCc1e" target="_blank" rel="noopener noreferrer" class="social-bar">
+                    <div class="soc-left">
+                        <i class="fa-brands fa-whatsapp wa-icon"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>Saluran N4MCHA</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+                </a>
+            </div>
+        </footer>
 
     </div>
 
     <script>
-        // 1. SCROLL SPY (Navigasi Aktif Otomatis)
+        // 1. LOGIKA TOMBOL EXPLORE & MUNCULKAN NAVBAR
+        const exploreBtn = document.getElementById('explore-btn');
+        const navbar = document.getElementById('main-navbar');
+
+        exploreBtn.addEventListener('click', () => {
+            // Hilangkan class sembunyi dan tambahkan class muncul
+            navbar.classList.remove('hidden-nav');
+            navbar.classList.add('visible-nav');
+        });
+
+        // 2. SCROLL SPY (Menu presisi tanpa nyangkut)
         const sections = document.querySelectorAll('.section-scroll');
         const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -181,6 +190,16 @@
                 }
             });
 
+            // Tampilkan navbar otomatis jika user manual scroll ke bawah
+            if (pageYOffset > 100) {
+                navbar.classList.remove('hidden-nav');
+                navbar.classList.add('visible-nav');
+            } else {
+                // Sembunyikan lagi kalau balik ke paling atas (opsional, biar landing page clean lagi)
+                navbar.classList.remove('visible-nav');
+                navbar.classList.add('hidden-nav');
+            }
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').includes(current)) {
@@ -189,16 +208,16 @@
             });
         });
 
-        // 2. KLIK MENU ACTIVE (Fix Bug Putih-putih Delay)
+        // 3. KLIK MENU ACTIVE
         const navItems = document.querySelectorAll('.nav-links .nav-item');
         navItems.forEach(item => {
-            item.addEventListener('touchstart', function() { // Gunakan touchstart untuk delay minimal di HP
+            item.addEventListener('click', function() {
                 navItems.forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
-            }, { passive: true });
+            });
         });
 
-        // 3. ANIMASI SAAT SCROLL BAWAH
+        // 4. ANIMASI SAAT SCROLL BAWAH
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -211,28 +230,6 @@
 
         const hiddenElements = document.querySelectorAll('.reveal-up');
         hiddenElements.forEach((el) => observer.observe(el));
-
-        // [MODIFIKASI] 4. ANIMASI TRANSISI SPLASH
-        const btnExplore = document.getElementById('btn-explore');
-        const heroWrapper = document.getElementById('hero-wrapper');
-        const navbarContainer = document.getElementById('navbar-container');
-        const mainContentWrapper = document.getElementById('main-content-wrapper');
-
-        btnExplore.addEventListener('click', () => {
-            // Terapkan animasi memudar keluar ke splash
-            heroWrapper.classList.add('fade-out');
-            
-            // Tunggu animasi memudar keluar selesai (misalnya 0.8s), lalu tampilkan konten utama
-            setTimeout(() => {
-                heroWrapper.style.display = 'none'; // Sembunyikan splash
-                
-                // Tampilkan navbar dan konten utama dengan memudar masuk
-                navbarContainer.style.display = 'block';
-                navbarContainer.classList.add('fade-in');
-                mainContentWrapper.style.display = 'block';
-                mainContentWrapper.classList.add('fade-in');
-            }, 800); // Sesuaikan dengan durasi animasi memudar keluar di CSS
-        });
     </script>
 </body>
 </html>
